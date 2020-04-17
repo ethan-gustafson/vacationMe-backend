@@ -6,7 +6,7 @@ class UsersController < ApplicationController
     end
 
     def login
-        user = User.find_by(username: params[:user][:username])
+        user = User.find_by(email: params[:user][:email])
         if user.try(:authenticate, params[:password])
             render json: UserSerializer.new(user)
         else
