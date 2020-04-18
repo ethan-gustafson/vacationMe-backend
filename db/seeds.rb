@@ -13,7 +13,7 @@ User.create(
     email: "ethan_gustafson@outlook.com"
 )
 
-20.times do
+10.times do
     User.create(
         name: Faker::Name.name,
         username: Faker::Internet.username,
