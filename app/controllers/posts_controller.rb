@@ -28,4 +28,19 @@ class PostsController < ApplicationController
             render json: {message: "Unable to save."}
         end
     end
+
+    def update
+        post = Post.find_by_id(params[:post][:id])
+        # byebug
+        if post.update(
+            title: params[:post][:title],
+            location: params[:post][:location],
+            caption: params[:post][:caption],
+            user_id: params[:post][:user_id]
+        )
+            render json: PostSerializer.new(post)
+        else
+            render json: {message: "Unable to save."}
+        end
+    end
 end
