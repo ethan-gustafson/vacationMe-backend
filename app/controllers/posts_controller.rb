@@ -13,4 +13,19 @@ class PostsController < ApplicationController
             render json: {message: "No Post Found."}
         end
     end
+
+    def create
+        byebug
+        post = Post.create(
+            name: params[:user][:name],
+            username: params[:user][:username],
+            email: params[:user][:email],
+            password: params[:password]
+        )
+        if post
+            render json: PostSerializer.new(user)
+        else
+            render json: {message: "Unable to save."}
+        end
+    end
 end
