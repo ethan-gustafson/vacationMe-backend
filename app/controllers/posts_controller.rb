@@ -15,15 +15,15 @@ class PostsController < ApplicationController
     end
 
     def create
-        byebug
+        # byebug
         post = Post.create(
-            name: params[:user][:name],
-            username: params[:user][:username],
-            email: params[:user][:email],
-            password: params[:password]
+            title: params[:post][:title],
+            location: params[:post][:location],
+            caption: params[:post][:caption],
+            user_id: params[:post][:user_id]
         )
         if post
-            render json: PostSerializer.new(user)
+            render json: PostSerializer.new(post)
         else
             render json: {message: "Unable to save."}
         end
