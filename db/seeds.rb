@@ -21,3 +21,12 @@ User.create(
         email: Faker::Internet.safe_email
     )
 end
+
+User.all.each do |user|
+    Post.create(
+        location: Faker::Address.state,
+        title: Faker::Quote.robin,
+        caption: Faker::Quote.famous_last_words,
+        user_id: user.id
+    )
+end
