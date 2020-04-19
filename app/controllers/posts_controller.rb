@@ -43,4 +43,13 @@ class PostsController < ApplicationController
             render json: {message: "Unable to save."}
         end
     end
+
+    def destroy
+        post = Post.find_by_id(params[:id])
+        if post.destroy
+            render json: {message: "success"}
+        else
+            render json: {message: "Unable to delete"}
+        end
+    end
 end
