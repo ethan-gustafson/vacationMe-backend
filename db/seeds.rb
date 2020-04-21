@@ -23,10 +23,19 @@ User.create(
 end
 
 User.all.each do |user|
+    integer = Random.new
+
     Post.create(
         location: Faker::Address.state,
         title: Faker::Quote.robin,
         caption: Faker::Quote.famous_last_words,
         user_id: user.id
     )
+
+    Like.create(
+        count: integer.rand(User.all.length),
+        user_id: integer.rand(User.all.length),
+        post_id: integer.rand(Post.all.length)
+    )
+
 end
