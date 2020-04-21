@@ -38,4 +38,10 @@ User.all.each do |user|
         post_id: integer.rand(Post.all.length)
     )
 
+    Comment.create(
+        description: "Seed Description number: #{user.id}. My name is: #{user.name} and my username is #{user.username}. Wish to contact me? Here is my email: #{user.email}",
+        user_id: user.id,
+        post_id: integer.rand(Post.all.length)
+    )
+
 end
