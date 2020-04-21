@@ -6,4 +6,8 @@ class Post < ApplicationRecord
     belongs_to :user
 
     validates :title, :location, :caption, presence: true
+
+    def likes_count
+        return self.likes.count
+    end
 end

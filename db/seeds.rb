@@ -33,7 +33,6 @@ User.all.each do |user|
     )
 
     Like.create(
-        count: integer.rand(User.all.length),
         user_id: integer.rand(User.all.length),
         post_id: integer.rand(Post.all.length)
     )
