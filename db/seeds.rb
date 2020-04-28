@@ -13,7 +13,7 @@ User.create(
     email: "ethan_gustafson@outlook.com"
 )
 
-10.times do
+5.times do
     User.create(
         name: Faker::Name.name,
         username: Faker::Internet.username,
@@ -38,7 +38,7 @@ User.all.each do |user|
     )
 
     Comment.create(
-        description: "Seed Description number: #{user.id}. My name is: #{user.name} and my username is #{user.username}. Wish to contact me? Here is my email: #{user.email}",
+        description: "Seed Description number: #{user.id}. My name is: #{user.name} and my username is #{user.username}. What an awesome Post!!!!",
         user_id: user.id,
         post_id: integer.rand(Post.all.length)
     )
