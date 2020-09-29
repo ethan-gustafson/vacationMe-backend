@@ -15,8 +15,8 @@ class PostsController < ApplicationController
     end
 
     def create
-        # byebug
         post = Post.new(post_params)
+        post.images.attach(params[:images])
         if post.save
             render json: PostSerializer.new(post)
         else
@@ -45,6 +45,6 @@ class PostsController < ApplicationController
     private
 
     def post_params
-        params.require(:post).permit(:title, :location, :caption, :user_id, images: [])
+        params.permit(:title, :location, :caption, :user_id)
     end
 end
