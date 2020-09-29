@@ -16,13 +16,8 @@ class PostsController < ApplicationController
 
     def create
         # byebug
-        post = Post.create(
-            title: params[:post][:title],
-            location: params[:post][:location],
-            caption: params[:post][:caption],
-            user_id: params[:post][:user_id]
-        )
-        if post
+        post = Post.new(post_params)
+        if post.save
             render json: PostSerializer.new(post)
         else
             render json: {message: "Unable to save."}
@@ -31,13 +26,7 @@ class PostsController < ApplicationController
 
     def update
         post = Post.find_by_id(params[:post][:id])
-        # byebug
-        if post.update(
-            title: params[:post][:title],
-            location: params[:post][:location],
-            caption: params[:post][:caption],
-            user_id: params[:post][:user_id]
-        )
+        if post.update(post_params)
             render json: PostSerializer.new(post)
         else
             render json: {message: "Unable to save."}
@@ -51,5 +40,11 @@ class PostsController < ApplicationController
         else
             render json: {message: "Unable to delete"}
         end
+    end
+
+    private
+
+    def post_params
+        params.require(:post).permit(:title, :location, :caption, :user_id, images: [])
     end
 end
