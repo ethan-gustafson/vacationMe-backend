@@ -13,34 +13,16 @@ User.create(
     email: "ethan_gustafson@outlook.com"
 )
 
-5.times do
-    User.create(
-        name: Faker::Name.name,
-        username: Faker::Internet.username,
-        password: Faker::Internet.password,
-        email: Faker::Internet.safe_email
-    )
-end
+User.create(
+    name: "Alli Karavas",
+    username: "Alli.k",
+    password: "456",
+    email: "alli_k@outlook.com"
+)
 
-User.all.each do |user|
-    integer = Random.new
-
-    Post.create(
-        location: Faker::Address.state,
-        title: Faker::Quote.robin,
-        caption: Faker::Quote.famous_last_words,
-        user_id: user.id
-    )
-
-    Like.create(
-        user_id: integer.rand(User.all.length),
-        post_id: integer.rand(Post.all.length)
-    )
-
-    Comment.create(
-        description: "Seed Description number: #{user.id}. My name is: #{user.name} and my username is #{user.username}. What an awesome Post!!!!",
-        user_id: user.id,
-        post_id: integer.rand(Post.all.length)
-    )
-
-end
+User.create(
+    name: "Ocean",
+    username: "MeowMeow",
+    password: "789",
+    email: "ima_cat@outlook.com"
+)
