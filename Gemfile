@@ -19,7 +19,7 @@ gem 'faker', '~> 2.11'
 gem 'fast_jsonapi'
 
 # Use Active Storage variant
-gem 'image_processing', '~> 1.2'
+gem 'image_processing', '~> 1.12'
 gem "aws-sdk-s3", require: false
 
 # Reduces boot times through caching; required in config/boot.rb
